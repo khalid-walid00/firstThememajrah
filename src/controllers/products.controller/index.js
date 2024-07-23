@@ -1,8 +1,7 @@
 const client = require("../../utils/qumraClient");
 
 module.exports = async (req, res, next) => {
-    const {slug} = req.params
-    const product = (await client.getProduct({ slug })).data;
-     
-    res.render("products.njk")
+    const products = (await client.getProducts({ limit: 10, page: 1 }))?.data;
+     console.log("productskk", products)
+    res.render("products.njk",{products})
   }
