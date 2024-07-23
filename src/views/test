@@ -1,0 +1,133 @@
+🚀 ~ module.exports= ~ product: {
+  _id: '669569b648deb9416e05556c',
+  title: 'i phone',
+  slug: '55iphone',
+  SKU: '0000003',
+  category: {
+    _id: '6692776558ef288e16718159',
+    title: 'prOne',
+    icon: 'icon.png',
+    description: 'prOne',
+    status: 'AVAILABLE',
+    deleted: false,
+    createdAt: '2024-07-02T19:53:32.375Z',
+    updatedAt: '2024-07-02T19:53:32.375Z',
+    __v: 0
+  },
+  subCategory: {
+    _id: '669277e058ef288e16718160',
+    title: 'متجر الكتروني',
+    category: '6692776558ef288e16718159',
+    icon: null,
+    description: 'متجر الكتروني',
+    status: 'AVAILABLE',
+    deleted: false,
+    createdAt: '2024-07-02T20:00:31.651Z',
+    updatedAt: '2024-07-02T20:00:31.651Z',
+    __v: 0
+  },
+  price: 1234,
+  priceAfterDiscount: 10,
+  content: 'sdfghjk',
+  status: 'AVAILABLE',
+  images: [
+    {
+      image: '1721067812881-326373123-442101887.png',
+      _id: '669569b648deb9416e05556d',
+      createdAt: '2024-07-15T18:25:58.650Z',
+      updatedAt: '2024-07-15T18:25:58.650Z',
+      imageUrl: 'https://cdn.qumra.cloud/o/100/1721067812881-326373123-442101887.png',
+      id: '669569b648deb9416e05556d'
+    }
+  ],
+  properties: [
+    {
+      property: [Object],
+      values: [Array],
+      _id: '669569b648deb9416e05556e',
+      createdAt: '2024-07-15T18:25:58.650Z',
+      updatedAt: '2024-07-15T18:25:58.650Z'
+    }
+  ],
+  pricing: [
+    {
+      title: 'ertghjk',
+      quantity: 4,
+      price: 5,
+      recommended: false,
+      freeShipping: true,
+      _id: '669569b648deb9416e055570',
+      createdAt: '2024-07-15T18:25:58.650Z',
+      updatedAt: '2024-07-15T18:25:58.650Z'
+    }
+  ],
+  user: {
+    _id: '66806d2c214dbdb1586ad937',
+    fullname: 'coder',
+    role: 'USER',
+    password: '81dc9bdb52d04dc20036dbd8313ed055',
+    phone: '+201094144292',
+    avatar: 'avatar.png',
+    blocked: false,
+    verfied: false,
+    activated: false,
+    deleted: false,
+    createdAt: '2024-06-29T18:57:59.880Z',
+    updatedAt: '2024-07-22T20:15:21.060Z',
+    __v: 0,
+    defaultApp: '6690386301b7b50da4588df9'
+  },
+  stock: {
+    quantity: 21,
+    quantityAlert: 0,
+    quantityTracking: false,
+    _id: '669569b648deb9416e055571',
+    createdAt: '2024-07-15T18:25:58.650Z',
+    updatedAt: '2024-07-15T18:25:58.650Z'
+  },
+  app: {
+    socialMedia: {
+      facebook: 'فيسبوكdv dfvfv',
+      instagram: 'انستغرامerve',
+      twitter: 'hdada',
+      tikTok: 'تيك توكververver',
+      youtube: 'fsdgsdgververve',
+      snapchat: 'سناب شاتveverververv',
+      whatsapp: '01011223366',
+      phone: '01011223366',
+      email: 'google@test.com'
+    },
+    pixels: { facebook: [Array], snapchat: [Array], tiktok: [Array] },
+    settings: {
+      copyright: 'Ahmed Elhdad',
+      mainColor: '#fdfcfc',
+      subColor: '#37ff00',
+      backgroundImage: '1721346530778-642490400-510753847.png',
+      storeIcon: '1721347242294-807609162-588440924.png',
+      backgroundColor: '#000000',
+      font: '6699c5682f02f2198c7cc7fb'
+    },
+    _id: '669194c09cd3be0e82a1979b',
+    name: 'متجرك',
+    type: 'UNMANAGED',
+    user: '66806d2c214dbdb1586ad937',
+    services: [ '66848aaf0886f9eeb6777e60' ],
+    logo: '1721428672920-451738007-939870557.png',
+    description: 'hdadmjhgfdfghjklkjhgfd',
+    secretKey: 'b964890acf799dfad971f94c258f84015648dcd9fa83dcce053906d5b86e1dd9',
+    interface: 'THEME',
+    deleted: false,
+    createdAt: '2024-07-12T20:40:32.427Z',
+    updatedAt: '2024-07-20T14:07:27.638Z',
+    __v: 36,
+    theme: '669655e1b99ecc4c16084aef',
+    subdomain: 'firstapp1',
+    category: '66849a8cc6e8c333fbaaa0fa',
+    subCategory: '66845c5f1a9979778e45d126',
+    head: '<h1>\nnbnmbmnbasdfghj\nsdfghjkl;\nfghjklkjh\n</h1>'
+  },
+  deleted: false,
+  createdAt: '2024-07-15T18:25:58.650Z',
+  updatedAt: '2024-07-15T18:25:58.650Z',
+  __v: 0
+}

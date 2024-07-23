@@ -1,0 +1,39 @@
+{%macro Card(title='',name="",size="",oldPrice="",currentPrice="")%}
+    <div class=" border border-gray rounded-md shadow-md">
+                        <img src="/images/prduct.jacket.png">
+                        <div class="p-4">
+                            <div class=" text-gold text-sm">{{title}}</div>
+                            <div class=" font-semibold text-base">{{name}}</div>
+                            <div class="flex w-full mt-4 items-center">
+                                <div class=" w-5/12">
+                                    <!-- choose color -->
+                                    <div class="flex flex-col">
+                                        <div>الألوان</div>
+                                        <span
+                                            class="border w-24 mt-2 p-1 h-10 border-gray items-center rounded-full flex gap-1">
+                                            <span class=" w-6 h-6 bg-mediumSpringBud rounded-full"></span>
+                                            <span class=" w-6 h-6 bg-desertSand  rounded-full"></span>
+                                            <span class=" w-6 h-6 bg-black rounded-full"></span>
+                                        </span>
+
+                                    </div>
+                                    <!-- choose color -->
+                                </div>
+                                <span class="self-end pb-3">{{size}}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-semibold text-red-500">{{oldPrice}} ج.م</span>
+                                <span class="text-brown-holder line-through">{{currentPrice}} ج.م</span>
+                            </div>
+                            <div class="mt-2 flex justify-center w-full">
+                                <!-- buy now -->
+                                <button class="btn-buyNow py-3 flex justify-center gap-2 items-center mt-2">
+                                    <img class="w-4 h-4" src="/icons/cart.png">
+                                    شراء الآن
+                                </button>
+                            </div>
+                            <!-- buy now -->
+
+                        </div>
+                    </div>
+{%endmacro%}

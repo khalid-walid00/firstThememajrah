@@ -1,59 +1,36 @@
-<!-- start Header  -->
- <div class=" overflow-x-hidden">
-        <div class=" bg-green h-24">
-            <div class=" text-white font-bold text-center text-lg">وفر أكثر من 100 درهم</div>
-            <div class=" flex justify-center mt-3">
-                <div class=" justify-between lg:w-10/12 md:10/12 w-full flex items-center lg:gap-2 md:gap-2 sm:gap-2 gap-1">
-                  
-                    <div>
-                        <img class="h-8 w-auto"
-                            src="https://easyorders.fra1.digitaloceanspaces.com/1714864575025139370.jpg" alt="">
-                    </div>
+  <!-- header -->
+    <div class="flex justify-center bg-black gap-4 text-white py-3">
+        شحن مجاني على المنتجات اكثر من 500 جنيه      
+          <img class="w-6 h-6" src="/icons/motor.png">
+    </div>
+    <div class="w-full flex justify-center bg-wheate" dir="rtl">
+        <div class="w-9/12 flex justify-between items-center ">
+            <!-- icon -->
+            <img class="w-16 h-16" src="/icons/header1.png">
+            <!-- icon -->
+            <!-- search -->
+            <div class="flex w-64 px-2 h-10 items-center bg-white rounded-lg">
+                <input type="text" class="flex-1 outline-none" placeholder="ابحث عما تريد">
+                <img class="w-4 h-4" src="/icons/search.png">
+            </div>
+            <!-- search -->
 
-                    <div class="relative flex-1">
-                     
-
-
-                        <input type="text" placeholder="أبحث عن..." class="input flex-1" value="">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" aria-hidden="true" class=" w-5 absolute left-2 top-3">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-                        </svg>
-
-                    </div>
-
-                    <svg width="24" height="24" viewBox="0 0 24 24" onclick="toggleMenu()" fill="white" 
-                    class=" text-white lg:hidden md:hidden w-8 h-8 sm:hidden mx-2" xmlns="http://www.w3.org/2000/svg">
-                        <rect y="4" width="20" height="2" fill="white"/>
-                        <rect y="11" width="20" height="2" fill="white"/>
-                        <rect y="18" width="20" height="2" fill="white"/>
-                    </svg>
-                </div>
-
+            <!-- links -->
+            <div class="flex gap-4 justify-between">
+                <a class=" font-semibold text-base ">الرئيسية</a>
+                <a class=" font-semibold text-base text-gray-500">المنتجات</a>
+                <a class=" font-semibold text-base text-gray-500">قائمة منسدلة</a>
+                <a class=" font-semibold text-base text-gray-500">صفحة</a>
+            </div>
+            <!-- links -->
+            <!-- conection us -->
+            <div class="flex justify-between items-center gap-8">
+                <a class=" bg-white px-2 py-1 rounded-lg border-gray-200 border">تواصل معنا</a>
+                <img class="w-8 h-8" src="/icons/basket.header.png">
 
             </div>
-        </div>
-        <div class=" hidden lg:flex md:flex sm:flex bg-white  w-full py-2 justify-center  header_links">
-            <div class=" w-10/12 flex items-center  justify-start gap-4  ">
-            <a class="text-center" href="/">المتجر</a>
-            <a class="text-center" href="./pages/refund-policy.html">سياسة الاستبدال و الاسترجاع</a>
-            <a class="text-center" href="./pages/shipping-policy.html">سياسة الشحن</a>
-        </div>
-</div>
+            <!-- conection us -->
 
-
-<div class="md:hidden lg:hidden   bg-white fixed shadow top-24 -left-52 transition-all duration-300 h-full z-999 w-52 rounded-r-lg " id="menu">
-    <div class="mt-2 hover:bg-green-800 hover:text-white mt-2 px-5"><a class="text-center" href="/">المتجر</a></div>
-    <div class="mt-2 hover:bg-green-800 hover:text-white mt-2 px-5"><a class="text-center" href="./pages/refund-policy.html">سياسة الاستبدال و الاسترجاع</a></div>
-    <div class="mt-2 hover:bg-green-800 hover:text-white my-2 px-5"><a class="text-center" href="./pages/shipping-policy.html">سياسة الشحن</a></div>
-</div>
+        </div>
     </div>
-<script>
-       function toggleMenu() {
-    var menu = document.getElementById("menu");
-    menu.classList.toggle("active");
-}
-</script>
-
-<!-- End Header  -->
+    <!-- header -->

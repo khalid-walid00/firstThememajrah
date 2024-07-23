@@ -1,31 +1,58 @@
-<!-- start footer  -->
-<footer>
-    <div class="container">
-        <nav x aria-label="Footer">
-            <div>
-                <a class=" text-base text-gray-500 hover:text-gray-900" href="/pages/privacy-policy">سياسات
-                            الخصوصية</a>
-            </div>
-            <div>
-                <a class=" text-base text-gray-500 hover:text-gray-900" href="/pages/refund-policy">سياسة
-                            الاستبدال و الاسترجاع</a>
-            </div>
-            <div>
-                <a class=" text-base text-gray-500 hover:text-gray-900" href="/pages/shipping-policy">سياسة
-                            الشحن</a>
-            </div>
-            <div class="default_footer_link px-5 py-2">
-                <a href="/pages/terms-and-conditions">شروط
-                            الاستخدام</a>
-            </div>
-        </nav>
-        <p class="mt-8 text-center text-base text-gray-400">جميع الحقوق
-                    محفوظة<!-- -->. © <!-- -->2024</p>
-        <p class="mt-8 text-center text-base text-gray-600">Powered By<!-- -->
-            <a class="text-emerald-600"
-                        href="#">Majarah</a>
-        </p>
-    </div>
+{%macro footer()%}
+          <!-- footer -->
+             <div class="w-full">
+                <div class="flex justify-between ">
+                     <div class=" w-1/5">
+                        <div class="text-lg font-semibold mb-3">عن متجرنا</div>
+                        <div class="text-brown-holder">في متجرنا، نؤمن بأن الأناقة تبدأ من الجودة. نقدم مجموعة متنوعة من الملابس التي تناسب جميع الأذواق والمناسبات، مستخدمين أفضل الخامات لضمان الراحة والأناقة. نسعى لتوفير تجربة تسوق مميزة عبر الإنترنت بخدمة عملاء ممتازة وشحن سريع. شكراً لاختياركم متجرنا، ونتطلع دائمًا لتقديم الأفضل</div>
+                     </div>
+                     <!--  -->
+                     <div class=" flex flex-col gap-3">
+                        <div class="text-lg font-semibold mb-1">عن متجرنا</div>
+                        <a class=" text-brown-holder">حسابى</a>
+                        <a class=" text-gold">طلباتى</a>
+                        <a class=" text-brown-holder">سلة المشتريات</a>
+                        <a class=" text-brown-holder">المفضلة</a>
+                     </div>
+                     <!--  -->
+                     <div class=" flex flex-col gap-3">
+                        <div class="text-lg font-semibold mb-1">الصفحات</div>
+                        <a class=" text-brown-holder">من نحن</a>
+                        <a class=" text-gold">ساسية الخصوصية</a>
+                        <a class=" text-brown-holder">الشروط والاحكام</a>
+                        <a class=" text-brown-holder">الدعم الفنى</a>
+                     </div>
+                     <!--  -->
+                     <div class=" flex flex-col gap-3">
+                        <div class="text-lg font-semibold mb-1">تواصل معنا</div>
+                        <a class=" text-brown-holder">
+                            <div>واتساب :</div>
+                            <div>+20115045060</div>
+                        </a>
+                        <a class=" text-brown-holder">
+                            <div>موبايل :</div>
+                            <div>+2001114445551</div>
+                        </a>
+                        <a class=" text-brown-holder">
+                            <div>البريد الآلكتروني :</div>
+                            <div>+Majarah@gmail.com</div>
+                        </a>
+                       
+                     </div>
+                     <!--  -->
+                     <div class=" flex flex-col gap-3">
+                        <div class="text-lg font-semibold mb-1">تابعنا على</div>
+                         <div class=" flex gap-1">
+                            <img class="w-8 h-8" src="/icons/facebook.png">
+                            <img class="w-8 h-8" src="/icons/twitter.png">
+                            <img class="w-8 h-8" src="/icons/insta.png">
+                            <img class="w-8 h-8" src="/icons/snap.png">
+                         </div>
+                     </div>
+                     <!--  -->
+                </div>
+                
+             </div>
+            <!-- footer -->
 
-</footer>
-<!-- end footer  -->
+{%endmacro%}
