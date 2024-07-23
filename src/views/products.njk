@@ -144,8 +144,8 @@
 
       <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1  gap-6 mt-5">
                    
-                   {%for item in products%}
-                   {{Card(title=item.title,name=category.title,size="3xl",currentPrice=item.priceAfterDiscount,oldPrice=item.price,slug=item.slug)}}
+                      {%for item in products%}
+                   {{Card(title=item.title,name=item.subCategory.title,size="3xl",currentPrice=item.price,oldPrice=item.priceAfterDiscount,slug=item.slug,imageUrl=item.images[0].imageUrl)}}
                    {%endfor%}
            
                 </div>
