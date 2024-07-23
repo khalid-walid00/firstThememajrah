@@ -1,5 +1,6 @@
 {% extends "layouts/layout.njk" %}
 {% from "common/components/card.njk" import Card %}
+{% from "common/components/customBtn.njk" import customBtn %}
 {% from "common/footer.njk" import footer %}
 {% from "common/components/product.njk" import product %}
 {% from "common/components/opinionsCard.njk" import opinionCard %}
@@ -111,10 +112,7 @@
           
           <!-- buy it -->
            <div class="w-full">
-          <a href="/order/{{product.data.slug}}" class="btn-makeorder flex justify-center  gap-2 items-center mt-2">
-           <img class="w-4 h-4" src="/icons/cart.png">
-           شراء الآن
-       </a>
+        {{customBtn(link="/order/{{products[0].slug}}")}}
     </div>
           <!-- buy it -->
         </div>
