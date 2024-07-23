@@ -14,3 +14,9 @@
    <div class=" btn-offers w-10/12">سعر القطعة {{price}} ج.م</div>
 
 {%endmacro%}
+{%macro PriceAndDiscount(oldPrice="",currentPrice="")%}
+ <div class="flex items-center gap-2">
+            <span class="text-xl font-semibold text-red-500">{{currentPrice}} ج.م</span>
+            <span class="text-brown-holder line-through">{{oldPrice}} ج.م</span>
+        </div>
+{%endmacro%}

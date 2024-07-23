@@ -1,0 +1,158 @@
+{% extends "layouts/layout.njk" %}
+{% from "common/copyRight.njk" import copyRight %}
+{% from "common/components/forms.njk" import field,label %}
+{% from "common/components/orders/wayToPay.njk" import wayToPay %}
+{% from "common/components/orders/dliveryMethod.njk" import dliveryMethod %}
+{% block title %}متجرك - صفحة طلب منتج{% endblock %}
+
+{% block content %}
+<div class="flex justify-center my-10" dir="rtl">
+    <div class="xl:w-9/12 w-11/12 flex xl:flex-row flex-col justify-center gap-4 xl:justify-between">
+        <!-- form -->
+        <div class="xl:w-7/12">
+            <div class="font-semibold text-2xl">للطلب برجاء ادخل بياناتك</div>
+            <div class="flex flex-col mt-4">
+                {{label(text="الاسم بالكامل")}}
+                {{field(placeholder="ادخل اسمك")}}
+             </div>
+            <div class="flex flex-col mt-4">
+
+               {{label(text="رقم الهاتف")}}
+                {{field(placeholder="ادخل رقم الهاتف")}}
+            </div>
+            <div class="flex flex-col mt-4">
+        
+                {{label(text="رقم الهاتف اخر")}}
+                {{field(placeholder="رقم عليه واتساب مثلا")}}
+            </div>
+            <div class="flex flex-col mt-4">
+             
+                    {{label(text="المحافظة")}}
+                   {{field(placeholder="ادخل المحافظة")}}
+            </div>
+            <div class="flex flex-col mt-4">
+       
+                    {{label(text="العنوان بالكامل")}}
+                   {{field(placeholder="منطقة، شارع، عمارة، شقة")}}
+            </div>
+            <div class="flex flex-col mt-4">
+                
+                    {{label(text="علامة مميزة")}}
+                   {{field(placeholder="منطقة، شارع، عمارة، شقة")}}
+            </div>
+
+            <!-- Delivery -->
+            <div class="font-bold text-2xl my-4">التوصيل</div>
+            <div class="delivery">
+                <div class="flex justify-between">
+        {{ dliveryMethod(type="شحن عادي",price="50")}}
+                </div>
+                <div class="flex justify-between mt-2">
+           {{ dliveryMethod(type="شحن سريع",price="100")}}
+
+                </div>
+            </div>
+            <!-- Delivery -->
+            <!-- ways to pay -->
+            <div>
+                <div class="font-bold text-2xl my-4">طريقة الدفع</div>
+                {{wayToPay(text='الدفع عند الاستلام')}}
+            </div>
+            <!-- ways to pay -->
+        </div>
+        <!-- form -->
+        <!-- invoice -->
+        <div class="xl:w-4/12">
+            <div class="invoice">
+                <!-- head -->
+                <div class="flex justify-between">
+                    <div class="text-2xl font-semibold">ملخص الطلب</div>
+                    <div class="flex items-center">
+                        <div class="border-b flex w-32 border-brown"></div>
+                    </div>
+                </div>
+                <!-- head -->
+                <!-- items -->
+                <div class="flex justify-between mt-5">
+                    <div class="flex justify-between gap-2">
+                        <img class="w-16 h-16 rounded-lg" src="{{ product.data.images[0].imageUrl }}">
+                        <div>
+                            <div class="font-bold">{{ product.data.slug }}</div>
+                            <div>
+                                <span class="text-gray-500 text-sm font-semibold">الكمية:</span>
+                                <span class="text-gray-600 text-sm">1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start font-bold text-2xl">{{ product.data.price }} ج.م</div>
+                </div>
+                <!-- items -->
+
+                <!-- Discount -->
+                <div>
+                    <div class="text-end font-semibold text-sm">كود الخصم</div>
+                    <div class="flex w-full gap-4 mt-2">
+                        <input class="flex-1 outline-none px-2 py-1 rounded-lg border-gray border" placeholder="ادخل كود الخصم">
+                        <button class="w-3/12 bg-white px-2 py-1 rounded-lg border-gray border">تطبيق</button>
+                    </div>
+                </div>
+                <!-- Discount -->
+                <!-- calc price -->
+                <div class="border-t border-b border-brown py-2 mt-2">
+                    <div class="flex justify-between mt-3">
+                        <div class="text-brown-holder font-semibold">السعر</div>
+                        <div class="font-semibold text-lg">{{ product.data.price }} ج.م</div>
+                    </div>
+                    <div class="flex justify-between mt-3">
+                        <div class="text-brown-holder font-semibold">الشحن</div>
+                        <div class="font-semibold text-lg" id="delivery">50</div>
+                    </div>
+                    <div class="flex justify-between mt-3">
+                        <div class="text-brown-holder font-semibold">كود الخصم</div>
+                        <div class="font-semibold text-lg">{{ product.data.discount }} ج.م</div>
+                    </div>
+                </div>
+                <!-- calc price -->
+                <!-- total -->
+                <div class="flex justify-between mt-3">
+                    <div class="text-brown-holder font-semibold">اجمالي المبلغ</div>
+                    <div id="total-price" class="font-semibold text-lg"></div>
+                </div>
+                <!-- total -->
+                <!-- make Order -->
+                <button class="btn-makeorder mt-2">تأكيد الطلب</button>
+                <!-- make Order -->
+            </div>
+        </div>
+        <!-- invoice -->
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const deliveryRadios = document.querySelectorAll('input[name="delivery"]');
+        const deliverySpan = document.getElementById('delivery');
+        const totalPriceElement = document.getElementById('total-price');
+        
+        const calculateTotalPrice = () => {
+            const price = {{ product.data.price }};
+            const discount = {{ product.data.priceAfterDiscount }};
+            const delivery = +document.querySelector('input[name="delivery"]:checked').value;
+            
+            const totalPrice = price + delivery - discount;
+            totalPriceElement.textContent = `${totalPrice} ج.م`;
+        };
+
+        deliveryRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                deliverySpan.textContent = this.value;
+                calculateTotalPrice();
+            });
+        });
+
+        calculateTotalPrice();
+    });
+</script>
+
+{{ copyRight() }}
+{% endblock %}

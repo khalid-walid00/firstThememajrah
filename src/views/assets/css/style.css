@@ -218,7 +218,29 @@
 
 .swipperHome {
     width: 100%;
-    height: 32rem;
+    height: 42rem;
+}
+.captia{
+    left: 33.333333%;
+    top: 10rem;
+
+}
+
+@media screen and (max-width: 920px) {
+    .swipperHome {
+        width: 100%;
+        height: auto !important;
+    }  
+    .captia{
+        left: 33.333333%;
+        top: 0rem;
+    
+    } 
+    .swipperHome-button-prev, .swipperHome-button-next{
+        top : 32% !important;
+    }
+
+    
 }
 
 .swipperHome-button-prev, .swipperHome-button-next {
@@ -245,17 +267,34 @@
     font-size: 20px !important;
 }
 
-.swipperHome-button-prev {
+/* .swipperHome-button-prev {
     left: 200px;
 }
 
 .swipperHome-button-next {
     right: 200px;
-}
+} */
 
 .type-product-circle {
     width: 135px;
     height: 135px;
     border-radius: 50px;
     background-color: var(--whiteYellow);
+}
+
+.item-center {
+    align-items: center;
+}
+.menu-icon {
+    cursor: pointer;
+}
+
+
+#menu.active {
+    display: block;
+    left: 0px !important;
+}
+
+.z-9999 {
+    z-index: 9999;
 }

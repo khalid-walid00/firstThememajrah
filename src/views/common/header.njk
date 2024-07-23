@@ -4,7 +4,7 @@
           <img class="w-6 h-6" src="/icons/motor.png">
     </div>
     <div class="w-full flex justify-center bg-wheate" dir="rtl">
-        <div class="w-9/12 flex justify-between items-center ">
+        <div class="lg:w-9/12 w-full flex justify-between items-center ">
             <!-- icon -->
             <img class="w-16 h-16" src="/icons/header1.png">
             <!-- icon -->
@@ -16,21 +16,40 @@
             <!-- search -->
 
             <!-- links -->
-            <div class="flex gap-4 justify-between">
-                <a class=" font-semibold text-base ">الرئيسية</a>
-                <a class=" font-semibold text-base text-gray-500">المنتجات</a>
-                <a class=" font-semibold text-base text-gray-500">قائمة منسدلة</a>
-                <a class=" font-semibold text-base text-gray-500">صفحة</a>
+            <div class="hidden md:flex gap-4 justify-between">
+                <a href="" class=" font-semibold text-base ">الرئيسية</a>
+                <a href="" class=" font-semibold text-base text-gray-500">المنتجات</a>
+                <a href="" class=" font-semibold text-base text-gray-500">قائمة منسدلة</a>
+                <a href="" class=" font-semibold text-base text-gray-500">صفحة</a>
             </div>
             <!-- links -->
             <!-- conection us -->
-            <div class="flex justify-between items-center gap-8">
+            <div class="hidden md:flex  justify-between items-center lg:gap-8 gap-2">
                 <a class=" bg-white px-2 py-1 rounded-lg border-gray-200 border">تواصل معنا</a>
                 <img class="w-8 h-8" src="/icons/basket.header.png">
 
             </div>
             <!-- conection us -->
-
+              <div class="flex md:hidden  item-center justify-center mx-2">
+                 <svg width="24" height="24" viewBox="0 0 " onclick="toggleMenu()" fill="black" 
+                    class=" text-black mx-2" xmlns="http://www.w3.org/2000/svg">
+                        <rect y="4" width="20" height="2" fill="black"/>
+                        <rect y="11" width="20" height="2" fill="black"/>
+                        <rect y="18" width="20" height="2" fill="black"/>
+                    </svg>
+                </div>
         </div>
+        <div class="md:hidden lg:hidden   bg-wheate fixed shadow top-28 -left-52 transition-all duration-300 h-full z-999 w-52 rounded-r-lg " id="menu"  style="z-index: 999999999;">
+    <div class="mt-2 hover:bg-yellow-400 hover:text-white mt-2 px-5"><a class="text-center" href="/">المتجر</a></div>
+    <div class="mt-2 hover:bg-yellow-400 hover:text-white mt-2 px-5"><a class="text-center" href="./pages/refund-policy.html">سياسة الاستبدال و الاسترجاع</a></div>
+    <div class="mt-2 hover:bg-yellow-400 hover:text-white my-2 px-5"><a class="text-center" href="./pages/shipping-policy.html">سياسة الشحن</a></div>
+</div>
     </div>
+    
     <!-- header -->
+    <script>
+       function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("active");
+}
+</script>

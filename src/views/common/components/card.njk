@@ -1,6 +1,6 @@
-{%macro Card(title='',name="",size="",oldPrice="",currentPrice="")%}
+{%macro Card(title='',name="",size="",oldPrice="",currentPrice="",slug="",imageUrl="/images/prduct.jacket.png")%}
     <div class=" border border-gray rounded-md shadow-md">
-                        <img src="/images/prduct.jacket.png">
+                        <img class="w-full" src="{{imageUrl}}">
                         <div class="p-4">
                             <div class=" text-gold text-sm">{{title}}</div>
                             <div class=" font-semibold text-base">{{name}}</div>

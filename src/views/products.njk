@@ -1,34 +1,218 @@
 {% extends "layouts/layout.njk" %}
+{% from "common/components/card.njk" import Card %}
+{% from "common/footer.njk" import footer %}
 {% from "common/components/product.njk" import product %}
+{% from "common/components/opinionsCard.njk" import opinionCard %}
+{% from "common/components/product/offerProduct/offerDetails.njk" import PriceAndDiscount %}
+{% from "common/components/aboutUs.njk" import aboutUs %}
+{% from "common/components/product/Color.njk" import Colors %}
+{% from "common/components/products/collectionType.njk" import collectionType %}
+{% from "common/components/products/clothesType.njk" import clothesType %}
+{% from "common/components/products/swiperProducts.njk" import swipperProducts %}
+{% from "common/components/products/finishNearby.njk" import date,produt,productImg %}
+{% from "common/components/rating.njk" import rating %}
 {% block title %}متجرك - الصفحة الرئيسية{% endblock %}
 {% block content %}
-    <div class="header_links ">
-        <div class="links container ">
-            <a href="/">المتجر</a>
-            <a href="./page/refund-policy.html">سياسة الاستبدال و الاسترجاع</a>
-            <a href="./page/shipping-policy.html">سياسة الشحن</a>
-        </div>
-    </div>
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="images/landing.png" alt="" srcset="">
+    <div class=" flex flex-col items-center justify-center" dir="rtl">
+      
+        <!-- swipper  -->
+
+        <div class="swiper swipperHome">
+            <div class="swiper-wrapper">
+                {# {%for item in Products%}
+                {%endfor%} #}
+               {{swipperProducts(title="عروض بداية الصيف 2024",decriptions="استمتع بأفضل العروض الصيفية الخ")}}
+               {{swipperProducts(title="عروض بداية الصيف 2024",decriptions="استمتع بأفضل العروض الصيفية الخ")}}
+
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-slide">
-                <img src="images/landing.png" alt="" srcset="">
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-    <div class="container">
-        <div class="headerTitle">
-            <h3> مقترحة لك</h3>
+            <div style="z-index: 999;" class="swipperHome-button-next  xl:right-96 md:right-0 sm:right-0 right-0">
+              <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.35897 12.5C1.18246 12.5 1.00595 12.432 0.87017 12.2961C0.598615 12.0243 0.598615 11.5895 0.87017 11.3177L5.69026 6.49321L0.87017 1.68233C0.598615 1.41053 0.598615 0.975651 0.87017 0.703851C1.14172 0.43205 1.57621 0.43205 1.84777 0.703851L7.1295 5.99037C7.2517 6.11268 7.33317 6.28935 7.33317 6.47961C7.33317 6.65629 7.26528 6.87373 7.1295 6.99604L1.84777 12.2961C1.71199 12.432 1.53548 12.5 1.35897 12.5Z" fill="white"/>
+                </svg>
+                </div>
+            <div style="z-index: 999;" class="swipperHome-button-prev  xl:left-96 md:left-0 sm:left-0 left-0 ">  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.64095 12.5002C6.46444 12.5002 6.28793 12.4322 6.15215 12.2961L0.870414 7.00352C0.748214 6.88107 0.666748 6.70419 0.666748 6.51371C0.666748 6.33684 0.734637 6.11915 0.870414 5.9967L6.15215 0.704085C6.42371 0.431972 6.85819 0.431972 7.12975 0.704085C7.4013 0.976199 7.4013 1.41158 7.12975 1.68369L2.30965 6.50011L7.12975 11.3301C7.4013 11.6022 7.4013 12.0376 7.12975 12.3097C6.99397 12.4322 6.81746 12.5002 6.64095 12.5002Z" fill="white"/>
+                </svg>
+                </div>
         </div>
 
+
+
+
+        <div class=" w-10/12  ">
+
+       <!-- about -->
+            <div class="mt-20 w-full">
+              {{aboutUs()}}
+            </div>
+            <!-- about -->
+      <!-- collection product -->
+       <div class="w-full flex md:flex-row flex-col md:justify-center justify-between gap-6 mt-20">
+        {# {%for item in clothesType%}
+        {%endfor%} #}
+        {{clothesType(type="ملابس الرجال",collection="كولكشن جديد")}}
+         {{clothesType(type="ملابس الاطفال",collection="كولكشن جديد")}}
+       </div>
+      <!-- collection product -->
+
+      <!-- type of product -->
+<div class="w-full mt-24  ">
+    <div>
+        <div class=" text-2xl font-bold">الاسئلة الاكثر شيوعا</div>
+        <div class="text-brown-holder">تسوق احدث المنتجات المميزة المضافة جديد</div>
     </div>
-       <div class=" grid grid-cols-4 gap-20">
-                {% for item in products %}
-                    {{ product(title=item.title,priceAfterDiscount=item.priceAfterDiscount,price=item.price,imageUrl=item.images[0].imageUrl,slug=item.slug) }}
-                {% endfor %}
+    <div class=" flex md:flex-row flex-col item-center gap-4 justify-center md:justify-between mt-6">
+        {# {%for item in collection%}
+        {%endfor%} #}
+      {{collectionType(title="كولكشن الضيف",type="الاطفال")}}
+      {{collectionType(title="كولكشن الضيف",type="الاطفال")}}
+      {{collectionType(title="كولكشن الضيف",type="الاطفال")}}
+      {{collectionType(title="كولكشن الضيف",type="الاطفال")}}
+      {{collectionType(title="كولكشن الضيف",type="الاطفال")}}
+   
+    </div>
+</div>
+      <!-- type of product -->
+<!-- finish nearby -->
+<div class="w-full mt-24">
+    <div>
+        <div class=" text-2xl font-bold">عروض تنتهى قريبا</div>
+        <div class="text-brown-holder">تسوق احدث المنتجات المميزة المضافة جديد</div>
+    </div>
+    <div class="flex md:flex-row flex-col justify-between border-yellow border rounded-lg gap-2 mt-6">
+    <div class="md:w-2/12">
+    {{productImg(img="/images/fisnishnearby.png")}}
+    </div>
+    <div class=" md:w-10/12 flex flex-col justify-between p-4">
+{{ produt(type,name)}}
+        <div class="flex gap-4 w-6/12 mt-4 items-center">
+            <div class="">
+                <!-- choose color -->
+               {{Colors()}}
+                <!-- choose color -->
+            </div>
+            <span class="self-end pb-3">M:3XL</span>
         </div>
+        <div class="flex items-center mt-2">
+        {{rating(rating="1")}}
+        </div>
+        <!-- disount -->
+       {{PriceAndDiscount(oldPrice="500",currentPrice="480")}}
+        <!-- disount -->
+          <!-- finsish at -->
+           <div class=" flex justify-center w-full mt-5">
+        <div class="flex w-10/12 justify-between">
+          {{date(day="2",moth="5",year="1",minute="5")}}
+            
+        </div>
+    </div>
+          <!-- finsish at -->
+          
+          <!-- buy it -->
+           <div class="w-full">
+          <button class="btn-makeorder flex justify-center  gap-2 items-center mt-2">
+           <img class="w-4 h-4" src="/icons/cart.png">
+           شراء الآن
+       </button>
+    </div>
+          <!-- buy it -->
+        </div>
+    </div>
+   
+    </div>
+<!-- finish nearby -->
+
+
+<!-- more product -->
+<div class="">
+    <div class="flex w-full justify-between  mt-20">
+
+        <div class="w-10/12">
+            <div class=" text-xl font-semibold">وصل حديثا</div>
+            <div class="text-brown-holder">تسوق احدث المنتجات المميزة المضافة جديد</div>
+        </div>
+
+
+        <div class="flex  gap-2">
+            <a class="border-gold  border p-2 rounded-lg h-max flex items-center">
+                <span class="text-gold">عرض الكل</span>
+                <img src="/icons/arrow.png" class="  w-2 h-3 mx-1">
+            </a>
+        </div>
+    </div>
+
+      <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1  gap-6 mt-5">
+                   
+                   {# {%for item in products%} #}
+                   {# {{Card(title=product.title,name=product.subCategory.title,size="3xl",currentPrice=product.price,oldPrice=product.priceAfterDiscount)}} #}
+                   {{Card(title="اطقم",name="ما هو مستقبل التجارة الإلكترونية",size="3xl",currentPrice="750.00",oldPrice="900")}}
+                   {# {%endfor%} #}
+           
+                   {# {%for item in product%}
+                   {{Card(title=product.title,name=product.subCategory.title,
+                   size="3xl",currentPrice=product.price,
+                   oldPrice=product.priceAfterDiscount,
+                   imageUrl=item.images[0].imageUrl,slug=item.slug)}}
+                   {%endfor%} #}
+             
+                </div>
+</div>
+<!-- more product -->
+
+               <!-- opinions -->
+            <div class=" mt-20 w-full">
+                <div>
+                    <div class=" text-2xl font-bold">رأي العملاء</div>
+                    <div class="text-brown-holder">بعض آراء المستخدمين والعملاء الخاصين بنا</div>
+                </div>
+
+                <div class=" xl:h-96 relative mt-5">
+
+                    <div
+                        class="swiper swipperOpinion swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl rounded-md">
+                        <div class="swiper-wrapper"
+                            style="transform: translate3d(477px, 0px, 0px); transition-duration: 0ms;">
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                                data-swiper-slide-index="0" style="width: 472px; margin-left: 5px;">
+                               <div class=" grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-6">
+                                                             {{opinionCard(name="محمد علي ",rating="5",message="تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! ")}}
+
+                               </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                                data-swiper-slide-index="0" style="width: 472px; margin-left: 5px;">
+                               <div class=" grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-6">
+                                {{opinionCard(name="محمد علي ",rating="5",message="تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! ")}}
+
+                               </div>
+                            </div>
+                        </div>
+                        <!-- <div
+                            class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                            <span
+                                class="swiper-pagination-bullet transition-all duration-300 ease-in-out !bg-black swiper-pagination-bullet-active !w-6 !opacity-100 !rounded-full"></span>
+                            <span
+                                class="swiper-pagination-bullet transition-all duration-300 ease-in-out !bg-black"></span>
+                            <span
+                                class="swiper-pagination-bullet transition-all duration-300 ease-in-out !bg-black"></span>
+                        </div> -->
+                        <!-- أزرار التحكم -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+
+
+                </div>
+
+            </div>
+            <!-- opinions -->
+
+  <!-- footer -->
+  {{footer()}}
+<!-- footer -->
+
+      
+        </div>
+    </div>
 {% endblock %}

@@ -5,6 +5,8 @@
 {% from "common/components/product/Color.njk" import Colors %}
 {% from "common/components/aboutUs.njk" import aboutUs %}
 {% from "common/components/card.njk" import Card %}
+{% from "common/components/opinionsCard.njk" import opinionCard %}
+{% from "common/footer.njk" import footer %}
 {% from "common/components/product/aboutProduct/productMaterial.njk" import ProductMaterial %}
 {% from "common/components/product/aboutProduct/productSize.njk" import productSize %}
 {% from "common/components/product/aboutProduct/productDressing.njk" import productDressing %}
@@ -19,16 +21,16 @@
 
  
      <div class=" flex justify-center" dir="rtl">
-        <div class=" w-9/12">
+        <div class=" xl:w-9/12 w-11/12">
 
             <!-- choosen product -->
-            <div class="flex mt-14 gap-4  justify-between">
-                <div class="w-5/12 relative">
+            <div class="flex xl:flex-row flex-col mt-14 gap-4 justify-center  xl:justify-between">
+                <div class="xl:w-5/12 relative">
                 
                     {{productImages(images=product.images)}}
                 </div>
 
-                <div class="w-7/12">
+                <div class="xl:w-7/12">
                     <!-- about price -->
                     {{productPrice(type=product.title,name=product.slug,price=product.price)}}
                     {# <div class="flex w-full">
@@ -68,7 +70,7 @@
 
                         <!-- color -->
                         <div class="w-5/12">
-                           {{productDressing(type="Classic Fit")}}
+                           {{productDressing(type=product.category.description)}}
                             <div class="mt-4">
                                 <!-- choose color -->
                                 {{Colors()}}
@@ -84,14 +86,14 @@
                     <div>
                         <div class=" text-lg font-semibold text-center my-4">عروض التوفير</div>
                         <!-- first offer -->
-                        <div class="offer h-48">
+                        <div class="offer lg:h-48">
                             <div class="flex justify-between">
                          {{offerDetails(offerIs="اشتري قطعة بسعر 480 ج.م",oldPreice="480.00",currentPrice="50.00")}}
                             </div>
                             <div class=" text-lg text-brown-holder my-3  font-semibold">اختر اللون والمقاس</div>
                             <div class="flex justify-between">
                                 <!-- choose size/color -->
-                                <div class=" flex justify-between w-full gap-4">
+                                <div class=" flex  md:flex-row flex-col justify-center  md:justify-between w-full gap-4">
                                     <!-- size -->
                                     {{productSize()}}
                                     <!-- size -->
@@ -200,12 +202,19 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-4 gap-6 mt-5">
+                <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1  gap-6 mt-5">
                    
                    {# {%for item in products%} #}
-                   {{Card(title="اطقم",name="طقم كامل بنك\طلون تيشرت",size="3xl",currentPrice="10",oldPrice="50")}}
+                   {{Card(title=product.title,name=product.subCategory.title,size="3xl",currentPrice=product.price,oldPrice=product.priceAfterDiscount)}}
                    {# {%endfor%} #}
-
+           
+                   {# {%for item in product%}
+                   {{Card(title=product.title,name=product.subCategory.title,
+                   size="3xl",currentPrice=product.price,
+                   oldPrice=product.priceAfterDiscount,
+                   imageUrl=item.images[0].imageUrl,slug=item.slug)}}
+                   {%endfor%} #}
+             
                 </div>
             </div>
 
@@ -217,8 +226,8 @@
                     <div class=" text-2xl font-bold">الاسئلة الاكثر شيوعا</div>
                     <div class="text-brown-holder">تسوق احدث المنتجات المميزة المضافة جديد</div>
                 </div>
-                <div class=" flex justify-between mt-8 gap-10">
-                    <div class="w-6/12 rounded-lg custom-shadow bg-whiteYellow1">
+                <div class=" flex lg:flex-row flex-col justify-center  xl:justify-between mt-8 gap-10">
+                    <div class="xl:w-6/12 rounded-lg custom-shadow bg-whiteYellow1">
                         <div class="flex  justify-around items-center  ">
                             <div class=" text-2xl font-bold p-6 ">كم الوقت الذي تأخده عملية الشحن</div>
                             <img class="w-5 h-5 text-gold" src="/icons/arrowDown.png">
@@ -229,7 +238,7 @@
                     </div>
 
                     <div
-                        class="w-6/12 h-max flex rounded-lg custom-shadow justify-around items-center bg-whiteYellow1 ">
+                        class="xl:w-6/12 h-max flex rounded-lg custom-shadow justify-around items-center bg-whiteYellow1 ">
                         <div class=" text-2xl font-bold p-6 ">كم الوقت الذي تأخده عملية الشحن</div>
                         <img class="w-5 h-5 text-gold" src="/icons/arrowDown.png">
                     </div>
@@ -251,7 +260,7 @@
                     <div class="text-brown-holder">بعض آراء المستخدمين والعملاء الخاصين بنا</div>
                 </div>
 
-                <div class=" h-96 relative mt-5">
+                <div class=" xl:h-96 relative mt-5">
 
                     <div
                         class="swiper swipperOpinion swiper-initialized swiper-horizontal swiper-pointer-events swiper-rtl rounded-md">
@@ -259,7 +268,7 @@
                             style="transform: translate3d(477px, 0px, 0px); transition-duration: 0ms;">
                             <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
                                 data-swiper-slide-index="0" style="width: 472px; margin-left: 5px;">
-                               <div class=" grid grid-cols-4 gap-6">
+                               <div class=" grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-6">
                                 <div class=" border border-gray rounded-md p-4">
                                     <div class=" font-semibold mb-2">محمد على</div>
                                     <div class="flex items-center">
@@ -308,179 +317,11 @@
                             </div>
                             <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
                                 data-swiper-slide-index="0" style="width: 472px; margin-left: 5px;">
-                               <div class=" grid grid-cols-4 gap-6">
-                                <div class=" border border-gray rounded-md p-4">
-                                    <div class=" font-semibold mb-2">محمد على</div>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-
-                                    </div>
-                                    <div class=" text-brown-holder mt-2">تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! </div>
-                                </div>
-                                <div class=" border border-gray rounded-md p-4">
-                                    <div class=" font-semibold mb-2">محمد على</div>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-
-                                    </div>
-                                    <div class=" text-brown-holder mt-2">تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! </div>
-                                </div>
-                                <div class=" border border-gray rounded-md p-4">
-                                    <div class=" font-semibold mb-2">محمد على</div>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-
-                                    </div>
-                                    <div class=" text-brown-holder mt-2">تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! </div>
-                                </div>
-                                <div class=" border border-gray rounded-md p-4">
-                                    <div class=" font-semibold mb-2">محمد على</div>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d1d5db"
-                                            aria-hidden="true" class="text-gray-300 h-4 w-4 flex-shrink-0">
-                                            <path fill-rule="evenodd"
-                                                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-
-                                    </div>
-                                    <div class=" text-brown-holder mt-2">تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! </div>
-                                </div>
+                               <div class=" grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-6">
+                               {# {%for item in opinions%}
+                               {%endfor%} #}
+                               {{opinionCard(name="محمد علي ",rating="5",message="تجربتي مع هذا المتجر كانت رائعة. الملابس ذات جودة عالية والأسعار مناسبة. أحببت حقًا مجموعة الملابس الكاجوال والرسمي. خدمة العملاء أيضًا كانت ممتازة، وسرعة الشحن فاقت توقعاتي. سأكون عميلًا دائمًا بالتأكيد! ")}}
+                            
                                </div>
                             </div>
                         </div>
@@ -506,59 +347,7 @@
 
 
             <!-- footer -->
-             <div class="w-full">
-                <div class="flex justify-between ">
-                     <div class=" w-1/5">
-                        <div class="text-lg font-semibold mb-3">عن متجرنا</div>
-                        <div class="text-brown-holder">في متجرنا، نؤمن بأن الأناقة تبدأ من الجودة. نقدم مجموعة متنوعة من الملابس التي تناسب جميع الأذواق والمناسبات، مستخدمين أفضل الخامات لضمان الراحة والأناقة. نسعى لتوفير تجربة تسوق مميزة عبر الإنترنت بخدمة عملاء ممتازة وشحن سريع. شكراً لاختياركم متجرنا، ونتطلع دائمًا لتقديم الأفضل</div>
-                     </div>
-                     <!--  -->
-                     <div class=" flex flex-col gap-3">
-                        <div class="text-lg font-semibold mb-1">عن متجرنا</div>
-                        <a class=" text-brown-holder">حسابى</a>
-                        <a class=" text-gold">طلباتى</a>
-                        <a class=" text-brown-holder">سلة المشتريات</a>
-                        <a class=" text-brown-holder">المفضلة</a>
-                     </div>
-                     <!--  -->
-                     <div class=" flex flex-col gap-3">
-                        <div class="text-lg font-semibold mb-1">الصفحات</div>
-                        <a class=" text-brown-holder">من نحن</a>
-                        <a class=" text-gold">ساسية الخصوصية</a>
-                        <a class=" text-brown-holder">الشروط والاحكام</a>
-                        <a class=" text-brown-holder">الدعم الفنى</a>
-                     </div>
-                     <!--  -->
-                     <div class=" flex flex-col gap-3">
-                        <div class="text-lg font-semibold mb-1">تواصل معنا</div>
-                        <a class=" text-brown-holder">
-                            <div>واتساب :</div>
-                            <div>+20115045060</div>
-                        </a>
-                        <a class=" text-brown-holder">
-                            <div>موبايل :</div>
-                            <div>+2001114445551</div>
-                        </a>
-                        <a class=" text-brown-holder">
-                            <div>البريد الآلكتروني :</div>
-                            <div>+Majarah@gmail.com</div>
-                        </a>
-                       
-                     </div>
-                     <!--  -->
-                     <div class=" flex flex-col gap-3">
-                        <div class="text-lg font-semibold mb-1">تابعنا على</div>
-                         <div class=" flex gap-1">
-                            <img class="w-8 h-8" src="/icons/facebook.png">
-                            <img class="w-8 h-8" src="/icons/twitter.png">
-                            <img class="w-8 h-8" src="/icons/insta.png">
-                            <img class="w-8 h-8" src="/icons/snap.png">
-                         </div>
-                     </div>
-                     <!--  -->
-                </div>
-                
-             </div>
+          {{footer()}}
             <!-- footer -->
 
 

@@ -1,13 +1,11 @@
-{% macro field(name, value='', type='text') %}
-<div class="field">
-  <input type="{{ type }}" name="{{ name }}"
-         value="{{ value | escape }}" />
-</div>
+{% macro field(placeholder="", value='', type='text') %}
+        <input class="flex-1 outline-none px-2 py-2 rounded-lg border-gray border"placeholder='{{placeholder}}'>
+
 {% endmacro %}
 
-{% macro label(text) %}
+{% macro label(text="") %}
 <div>
-  <label>{{ text }}</label>
+                <label class="mb-2">{{text}}<span class="text-red-600">*</span></label>
 </div>
 {% endmacro %}
 
@@ -19,8 +17,30 @@
 
 {% macro image(src, alt, text) %}
   <img src="{{ src }}" alt="{{ alt }}" loading="lazy">
+
+
+  
 {% endmacro %}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# 
 {% macro slider(images) %}
 <div class="slider">
   {% for image in images %}
@@ -157,5 +177,5 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Clearing cart');
   }
 });
-</script>
-{% endmacro %}
+</script> #}
+{# {% endmacro %} #}

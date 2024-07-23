@@ -6,5 +6,6 @@ Router.use("/product" , require("./product.router"))
 Router.use("/products" , require("./products.router"))
 Router.use("/page" , require("./page.router"))
 Router.use("/about" , require("./about.router"))
+Router.use("/order" , require("./makeOrder.router"))
 
 module.exports = Router;
