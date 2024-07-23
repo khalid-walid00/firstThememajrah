@@ -1,5 +1,6 @@
 {%macro Card(title='',name="",size="",oldPrice="",currentPrice="",slug="",imageUrl="/images/prduct.jacket.png")%}
     <div class=" border border-gray rounded-md shadow-md">
+        <a href="/product/{{slug}}">
                         <img class="w-full" src="{{imageUrl}}">
                         <div class="p-4">
                             <div class=" text-gold text-sm">{{title}}</div>
@@ -27,13 +28,13 @@
                             </div>
                             <div class="mt-2 flex justify-center w-full">
                                 <!-- buy now -->
-                                <button class="btn-buyNow py-3 flex justify-center gap-2 items-center mt-2">
+                                <a href="/order/{{slug}}" class="btn-buyNow py-3 flex justify-center gap-2 items-center mt-2">
                                     <img class="w-4 h-4" src="/icons/cart.png">
                                     شراء الآن
-                                </button>
+                                </a>
                             </div>
                             <!-- buy now -->
 
                         </div>
-                    </div>
+                   </a> </div>
 {%endmacro%}

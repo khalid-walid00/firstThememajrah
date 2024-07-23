@@ -111,10 +111,10 @@
           
           <!-- buy it -->
            <div class="w-full">
-          <button class="btn-makeorder flex justify-center  gap-2 items-center mt-2">
+          <a href="/order/{{product.data.slug}}" class="btn-makeorder flex justify-center  gap-2 items-center mt-2">
            <img class="w-4 h-4" src="/icons/cart.png">
            شراء الآن
-       </button>
+       </a>
     </div>
           <!-- buy it -->
         </div>
@@ -146,7 +146,7 @@
                    
                    {# {%for item in products%} #}
                    {# {{Card(title=product.title,name=product.subCategory.title,size="3xl",currentPrice=product.price,oldPrice=product.priceAfterDiscount)}} #}
-                   {{Card(title="اطقم",name="ما هو مستقبل التجارة الإلكترونية",size="3xl",currentPrice="750.00",oldPrice="900")}}
+                   {{Card(title="اطقم",name="ما هو مستقبل التجارة الإلكترونية",size="3xl",currentPrice="750.00",oldPrice="900",slug=product.slug)}}
                    {# {%endfor%} #}
            
                    {# {%for item in product%}
